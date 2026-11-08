@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f7f2">
+  <meta name="description" content="Tu espacio simple para registrar hábitos, actividad y progreso.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <title>Equilibrio · Control de peso</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#inicio" aria-label="Equilibrio, inicio"><span class="brand-mark">e</span><span>equilibrio</span></a>
+      <button class="avatar" aria-label="Perfil">☺</button>
+    </header>
+
+    <main>
+      <section id="inicio" class="welcome">
+        <div><p class="eyebrow" id="today-label">HOY</p><h1>Hola <span>☀️</span></h1><p class="subtle">Un paso a la vez. ¿Cómo va tu día?</p></div>
+      </section>
+
+      <section class="summary-grid" aria-label="Resumen del día" id="progreso">
+        <article class="card weight-card">
+          <div class="card-heading"><span class="icon-chip mint">↗</span><span class="subtle">Peso actual</span><button class="more" aria-label="Registrar peso" data-open="weight-modal">＋</button></div>
+          <div class="metric"><strong id="current-weight">—</strong><span>kg</span></div>
+          <p class="trend" id="weight-trend">Registra tu primer peso</p>
+          <div class="sparkline" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        </article>
+        <article class="card activity-card">
+          <div class="card-heading"><span class="icon-chip peach">⚡</span><span class="subtle">Movimiento</span><button class="more" aria-label="Registrar actividad" data-open="activity-modal">＋</button></div>
+          <div class="metric"><strong id="activity-count">0</strong><span>min</span></div>
+          <p class="trend">de actividad hoy</p>
+          <div class="progress-track"><span id="activity-progress"></span></div>
+          <p class="tiny">Meta sugerida: 30 min</p>
+        </article>
+      </section>
+
+      <section class="section-head" id="habitos"><div><p class="eyebrow">TU DÍA</p><h2>Hábitos de hoy</h2></div><button class="text-button" data-open="meal-modal">＋ Añadir comida</button></section>
+      <section class="card meals-card">
+        <div class="card-heading"><div><h3>Alimentación</h3><p class="subtle">Registra tus comidas para ver tu día</p></div><span class="icon-chip lavender">✳</span></div>
+        <div class="meal-list" id="meal-list"><div class="empty-state">Aún no hay comidas registradas.<br><button class="inline-link" data-open="meal-modal">Añade la primera</button></div></div>
+      </section>
+
+      <section class="section-head routine-heading" id="entrenamiento"><div><p class="eyebrow">PLAN DE ENTRENAMIENTO</p><h2>Tren superior + abdomen</h2></div><span class="routine-tag">3 días / semana</span></section>
+      <section class="routine-intro"><div class="routine-illustration">🏋️‍♂️</div><div><strong>Fuerza con calma</strong><p>Rutina base para pecho, espalda, hombros y core. Descansa 60–90 s entre series.</p></div></section>
+      <section class="routine-days" id="routine-days"></section>
+      <p class="footnote">Ajusta el esfuerzo a tu nivel. Si sientes dolor, detén el ejercicio. Si tienes una lesión o condición médica, consulta a un profesional antes de comenzar.</p>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navegación"><a class="nav-item active" href="#inicio"><span>⌂</span>Inicio</a><a class="nav-item" href="#habitos"><span>◷</span>Hábitos</a><a class="nav-item" href="#entrenamiento"><span>♧</span>Rutina</a><a class="nav-item" href="#progreso"><span>▥</span>Progreso</a></nav>
+  </div>
+
+  <dialog id="weight-modal"><form method="dialog" class="modal"><button class="close" aria-label="Cerrar">×</button><p class="eyebrow">PROGRESO</p><h2>Registrar peso</h2><label for="weight-input">Peso de hoy (kg)</label><input id="weight-input" type="number" min="20" max="400" step="0.1" placeholder="Ej. 78.5" required><div class="modal-actions"><button class="secondary close-action">Cancelar</button><button class="primary" id="save-weight">Guardar peso</button></div></form></dialog>
+  <dialog id="activity-modal"><form method="dialog" class="modal"><button class="close" aria-label="Cerrar">×</button><p class="eyebrow">MOVIMIENTO</p><h2>Registrar actividad</h2><label for="activity-type">Actividad</label><select id="activity-type"><option>Entrenamiento de fuerza</option><option>Caminata</option><option>Bicicleta</option><option>Yoga o movilidad</option><option>Otra actividad</option></select><label for="activity-minutes">Duración (minutos)</label><input id="activity-minutes" type="number" min="1" max="600" placeholder="Ej. 30" required><div class="modal-actions"><button class="secondary close-action">Cancelar</button><button class="primary" id="save-activity">Guardar actividad</button></div></form></dialog>
+  <dialog id="meal-modal"><form method="dialog" class="modal"><button class="close" aria-label="Cerrar">×</button><p class="eyebrow">ALIMENTACIÓN</p><h2>Añadir comida</h2><label for="meal-name">¿Qué comiste?</label><input id="meal-name" type="text" maxlength="80" placeholder="Ej. Avena con fruta" required><label for="meal-type">Momento</label><select id="meal-type"><option>Desayuno</option><option>Almuerzo</option><option>Cena</option><option>Colación</option></select><div class="modal-actions"><button class="secondary close-action">Cancelar</button><button class="primary" id="save-meal">Guardar comida</button></div></form></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
