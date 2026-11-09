@@ -9,6 +9,7 @@
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icon.svg">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="guide.css">
   <title>Equilibrio · Control de peso</title>
 </head>
 <body>
@@ -57,6 +58,7 @@
   <dialog id="weight-modal"><form method="dialog" class="modal"><button class="close" aria-label="Cerrar">×</button><p class="eyebrow">PROGRESO</p><h2>Registrar peso</h2><label for="weight-input">Peso de hoy (kg)</label><input id="weight-input" type="number" min="20" max="400" step="0.1" placeholder="Ej. 78.5" required><div class="modal-actions"><button class="secondary close-action">Cancelar</button><button class="primary" id="save-weight">Guardar peso</button></div></form></dialog>
   <dialog id="activity-modal"><form method="dialog" class="modal"><button class="close" aria-label="Cerrar">×</button><p class="eyebrow">MOVIMIENTO</p><h2>Registrar actividad</h2><label for="activity-type">Actividad</label><select id="activity-type"><option>Entrenamiento de fuerza</option><option>Caminata</option><option>Bicicleta</option><option>Yoga o movilidad</option><option>Otra actividad</option></select><label for="activity-minutes">Duración (minutos)</label><input id="activity-minutes" type="number" min="1" max="600" placeholder="Ej. 30" required><div class="modal-actions"><button class="secondary close-action">Cancelar</button><button class="primary" id="save-activity">Guardar actividad</button></div></form></dialog>
   <dialog id="meal-modal"><form method="dialog" class="modal"><button class="close" aria-label="Cerrar">×</button><p class="eyebrow">ALIMENTACIÓN</p><h2>Añadir comida</h2><label for="meal-name">¿Qué comiste?</label><input id="meal-name" type="text" maxlength="80" placeholder="Ej. Avena con fruta" required><label for="meal-type">Momento</label><select id="meal-type"><option>Desayuno</option><option>Almuerzo</option><option>Cena</option><option>Colación</option></select><div class="modal-actions"><button class="secondary close-action">Cancelar</button><button class="primary" id="save-meal">Guardar comida</button></div></form></dialog>
+  <dialog id="guide-modal"><div class="modal guide-modal"><button class="close" aria-label="Cerrar">×</button><p class="eyebrow">GUÍA DEL EJERCICIO</p><h2 id="guide-title">Ejercicio</h2><p class="guide-area" id="guide-area"></p><div class="guide-media" id="guide-media"></div><ol class="guide-steps" id="guide-steps"></ol><div class="easy-option"><strong>Hazlo más fácil</strong><p id="guide-easier"></p></div><div class="guide-actions"><a class="guide-resource" id="guide-photo" href="#" target="_blank" rel="noopener noreferrer">Ver fotos y técnica paso a paso ↗</a><a class="guide-resource video-link" id="guide-video" href="#" target="_blank" rel="noopener noreferrer" hidden>Ver video ↗</a></div><p class="guide-source">Demostraciones externas: American Council on Exercise (ACE), NHS y Mayo Clinic. Abre el enlace si el video no carga.</p></div></dialog>
   <script src="app.js"></script>
 </body>
 </html>
